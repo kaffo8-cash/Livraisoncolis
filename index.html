@@ -1,1 +1,1021 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Livraison Colis</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+<div id="languageLoading">
+    <span>Changement de langue </span>
+    <span class="loadingIcon"></span>
+</div>
+  
+
+
+<!-- HEADER -->
+<header class="header"> 
+
+<div class="brand">
+<div class="logo-box">
+<img src="logo.png" class="logo">
+</div>
+
+<div class="brand-text">
+<h1>Livraison Colis Express</h1>
+<p>Moins cher - Rapide - Sécurisé</p>
+</div>
+</div>
+<div class="languageSwitcher">
+    <span id="frBtn" class="active" onclick="changeLanguage('fr')">
+        🇫🇷 FR
+    </span>
+
+    <span class="separator">|</span>
+
+    <span id="enBtn" onclick="changeLanguage('en')">
+        🇬🇧 EN
+    </span>
+</div>
+
+<button id="menuBtn">☰</button>
+
+</header>
+
+<!-- MENU -->
+<nav id="sideMenu">
+
+<div class="menuHeader">
+<h2>MENU</h2>
+<button id="closeMenu">✕</button>
+</div>
+
+<ul>
+<li onclick="showPage('home')">&lt; Accueil</li>
+<li onclick="showPage('comment')">Comment ça marche</li>
+<li onclick="showPage('services')">Nos services</li>
+<li onclick="showPage('aide')">Aide / FAQ</li>
+
+<li class="whatsapp-btn" onclick="openWhatsApp()">
+<i class="fab fa-whatsapp"></i>
+📱 Nous contacter
+</li>
+</ul>
+
+</nav>
+
+<!-- ACCUEIL -->
+<section id="home" class="page active">
+
+<div class="hero">
+<h2>Envoyez vos colis moins cher</h2>
+<p>Rapide, sécurisé et fiable partout en France et en Europe</p>
+</div>
+
+<!-- VIDÉO PUBLICITAIRE -->
+<div class="video-container">
+
+<video autoplay muted loop playsinline controls>
+<source src="video.mp4" type="video/mp4">
+Votre navigateur ne prend pas en charge la vidéo.
+</video>
+
+</div>
+
+<!-- ENVOYER / SUIVRE -->
+<div class="home-tabs">
+
+<button id="sendTab" class="tabBtn active"
+onclick="showHomeTab('send')">
+Envoyer un colis
+</button>
+
+<div style="text-align:center; font-weight:bold; margin:1px 0; color:#555;">
+ou
+</div>
+
+<button id="trackTab" class="tabBtn"
+onclick="showHomeTab('track')">
+Suivre une expédition
+</button>
+
+</div>
+
+<!-- FORMULAIRE ENVOYER -->
+<div id="sendForm" class="homeForm">
+  <div id="formulaireExpedition"></div>
+
+<div class="card">
+  <h4 style="text-align:center; margin-bottom:15px; color:#005A9C;">
+
+Informations sur l’expéditeur
+
+  </h4>
+
+<label><b>Nom complet :</b></label>
+<input type="text" id="clientNom" placeholder="Nom et prénom">
+
+<label><b>Téléphone :</b></label>
+<input type="text" id="clientTel" placeholder="Numéro de téléphone">
+
+<label><b>Email :</b></label>
+<input type="email" id="clientEmail" placeholder="Adresse email ">
+
+<label><b>Description du colis :</b></label>
+<input type="text" id="descriptionColis"
+placeholder="Ex : vêtements, documents, colis fragile...">
+  <!-- TITRE DESTINATAIRE -->
+
+<h4 style="text-align:center; margin-top:20px; margin-bottom:10px; color:#0078D4;">
+
+Informations sur le destinataire
+
+</h4>
+
+<label><b>Nom complet :</b></label>
+
+<input type="text" id="destNom" placeholder="Nom et prénom du destinataire ">
+
+<label><b>Téléphone :</b></label>
+
+<input type="text" id="destTel" placeholder="Numéro de téléphone du destinataire ">
+
+<label><b>Email :</b></label>
+
+<input type="email" id="destEmail" placeholder="Email du destinataire ">
+
+<button class="mainButton" onclick="showPage('services')">
+Suivant
+</button>
+
+</div>
+
+<!-- =========================
+     GRILLE DES TARIFS
+========================= -->
+
+<div class="tarifsSection">
+
+<h2>Des tarifs simples, transparents et parmi les plus avantageux pour vos besoins d'expéditions.</h2>
+
+<!-- Tarifs nationaux -->
+<div class="tarifCard">
+
+<div class="tarifHeader">
+<span>Tarifs nationaux</span>
+<span>Prix</span>
+</div>
+
+<div class="tarifRow">
+<span>Jusqu'à 0,5 kg</span>
+<span>À partir de 2,95 €</span>
+</div>
+
+<div class="tarifRow">
+<span>Jusqu'à 2 kg</span>
+<span>À partir de 5,20 €</span>
+</div>
+
+<div class="tarifRow">
+<span>Jusqu'à 5 kg</span>
+<span>À partir de 8,26 €</span>
+</div>
+
+<div class="tarifRow">
+<span>Jusqu'à 10 kg</span>
+<span>À partir de 12,36 €</span>
+</div>
+
+<div class="tarifRow">
+<span>Jusqu'à 30 kg</span>
+<span>À partir de 36,78 €</span>
+</div>
+
+<div class="tarifRow">
+<span>Jusqu'à 50 kg</span>
+<span>À partir de 51,49 €</span>
+</div>
+
+<div class="tarifRow">
+<span>Jusqu'à 100 kg</span>
+<span>À partir de 128,53 €</span>
+</div>
+
+</div>
+
+<!-- Tarifs internationaux -->
+
+<div class="tarifCard">
+
+<div class="tarifHeader">
+<span>Tarifs internationaux</span>
+<span>Prix</span>
+</div>
+
+<div class="tarifRow">
+<span>Espagne</span>
+<span>À partir de 7,92 €</span>
+</div>
+
+<div class="tarifRow">
+<span>Belgique</span>
+<span>À partir de 5,38 €</span>
+</div>
+
+<div class="tarifRow">
+<span>Italie</span>
+<span>À partir de 14,21 €</span>
+</div>
+
+<div class="tarifRow">
+<span>Allemagne</span>
+<span>À partir de 11,02 €</span>
+</div>
+
+ <div class="tarifRow">
+<span>Luxembourg</span>
+<span>À partir de 10,32 €</span>
+</div>
+
+  <div class="tarifRow">
+<span>Autres pays d'europe </span>
+<span>À partir de 14,58 €</span>
+</div>
+</div>
+
+<!-- NOS AVANTAGES -->
+
+<section class="advantages">
+
+<h2>   Pourquoi choisir Livraison Colis Express ?</h2>
+
+<div class="advantagesGrid">
+
+<div class="advantageCard">
+<img src="images/expeditions.svg" alt="">
+<h3>Expéditions simples</h3>
+<p>Expédiez votre colis en quelques clics grâce à un processus simple, rapide et accessible à tous: choisissez entre le service de  livraison en point relais ou le service de  livraison standard-domicile.</p>
+</div>
+
+<div class="advantageCard">
+<img src="images/comparer.svg" alt="">
+<h3>Comparez les prix</h3>
+<p>Comparez nos tarifs et choisissez la solution de livraison la plus adaptée à votre budget ou Comparez les tarifs d'expédition de colis et les délais de livraison de La Poste, BRT, UPS, TNT, DHL et autres et achetez le service en moins de trois minutes.</p>
+</div>
+
+<div class="advantageCard">
+<img src="images/ligne.svg" alt="">
+<h3>Expédiez en ligne</h3>
+<p> Réservez votre livraison depuis votre téléphone ou votre ordinateur quand  ou comme vous le souhaitez en quelques minutes.</p>
+</div>
+
+<div class="advantageCard">
+<img src="images/rapide.svg" alt="">
+<h3>Livraison rapide</h3>
+<p>Choisir Livraison colis Express c'est Choisir un service rapide pour une livraison fiable partout en France et en Europe.</p>
+</div>
+
+<div class="advantageCard">
+<img src="images/suivi.svg" alt="">
+<h3>Suivi du colis</h3>
+<p> Gardez le contrlôle sur votre livraison en Suivant l’évolution de votre colis en temps réel du point de départ  jusqu’à sa destination finale.</p>
+</div>
+
+<div class="advantageCard">
+<img src="images/securise.svg" alt="">
+<h3>Paiement sécurisé</h3>
+<p>Effectuez vos paiements en toute confiance car nous utilisons des solutions de paiement fiables grâce à des transactions entièrement sécurisées. </p>
+</div>
+
+<div class="advantageCard">
+<img src="images/economie.svg" alt="">
+<h3>Économisez sur vos expéditions</h3>
+<p>Jusqu'à 60%.Faites des économies sur chacune de vos expéditions avec nos solutions adaptées à tous les budgets.</p>
+</div>
+</div>
+</section>
+</div>
+<!-- PRÉSENTATION DE LA LIVRAISON -->
+
+<section class="trackingPresentation">
+
+<h2>Une expérience de livraison pensée pour vous</h2>
+
+<p>
+Découvrez en quelques secondes comment nous assurons un suivi simple, rapide et fiable de vos expéditions.
+</p>
+<div class="trackingVideo">
+
+<video autoplay muted loop playsinline>
+<source src="tracking.mp4" type="video/mp4">
+Votre navigateur ne prend pas en charge la vidéo.
+</video>
+
+</div>
+</section>
+  
+<!-- NOS PARTENAIRES -->
+<section class="partnersSection">
+
+<h2>Nos partenaires de confiance</h2>
+
+<div class="partnersGrid">
+
+<div class="partnerCard">
+<img src="images/laposte.png" alt="La Poste">
+<p>MONDIAL RELAIS</p>
+</div>
+
+<div class="partnerCard">
+<img src="images/dhl.png" alt="DHL">
+<p>DHL</p>
+</div>
+
+<div class="partnerCard">
+<img src="images/ups.png" alt="UPS">
+<p>UPS</p>
+</div>
+
+<div class="partnerCard">
+<img src="images/tnt.png" alt="TNT">
+<p>TNT</p>
+</div>
+
+<div class="partnerCard">
+<img src="images/brt.png" alt="BRT">
+<p>COLISSOMO</p>
+</div>
+
+<div class="partnerCard">
+<img src="images/fedex.png" alt="FedEx">
+<p>CHRONOPOST</p>
+</div>
+</div>
+</section>
+  <section class="testimonialSection">
+  <div class="partnersTrustCard">
+<h2 class="partnersTrustTitle">
+Plus de 60 000 vendeurs en ligne et chefs d’entreprises nous font déjà confiance pour leurs livraisons.
+</h2>
+</div>
+  <section class="testimonials">
+
+<div class="testimonialCard">
+<div class="testimonialPhoto"></div>
+<h3>Nom du client</h3>
+<h4>Chef d'entreprise</h4>
+<p>Ajoutez ici le témoignage de votre client.</p>
+</div>
+
+<div class="testimonialCard">
+<div class="testimonialPhoto"></div>
+<h3>Nom du client</h3>
+<h4>Vendeur en ligne</h4>
+<p>Ajoutez ici le témoignage de votre client.</p>
+</div>
+
+<div class="testimonialCard">
+<div class="testimonialPhoto"></div>
+<h3>Nom du client</h3>
+<h4>Chef d'entreprise</h4>
+<p>Ajoutez ici le témoignage de votre client.</p>
+</div>
+
+<div class="testimonialCard">
+<div class="testimonialPhoto"></div>
+<h3>Nom du client</h3>
+<h4>Vendeur en ligne</h4>
+<p>Ajoutez ici le témoignage de votre client.</p>
+</div>
+
+<div class="testimonialCard">
+<div class="testimonialPhoto"></div>
+<h3>Nom du client</h3>
+<h4>Chef d'entreprise</h4>
+<p>Ajoutez ici le témoignage de votre client.</p>
+</div>
+  </section>
+  </section>
+
+  <div id="blueSectionContainer">
+    
+
+    <h2>À propos de Livraison colis Express</h2>
+    
+<p>
+    <a href="#" class="serviceClientLink" onclick="showPage('apropos')">
+        Qui sommes-nous ?
+    </a>
+</p>
+
+<p>
+    Découvrez notre histoire, notre mission, nos valeurs et notre engagement pour des livraisons rapides, fiables et sécurisées.
+</p>
+
+<p>
+    <a href="#" class="serviceClientLink" onclick="showPage('apropos')">
+        En savoir plus
+    </a>
+</p>
+
+    <div class="blueFooter">
+
+    <div class="blueLogo"></div>
+
+    <div class="blueInfos">
+        <h3>Livraison Colis Express</h3>
+        <p>Moins cher - Rapide - Sécurisé</p>
+    </div>
+
+</div>
+
+<div class="blueContact">
+  <p class="emailLine">📮Email: Livraisondecolismoinscher@gmail.com </p>
+</div>
+
+<h4 class="paymentTitle">Paiements sécurisés</h4>
+
+<div class="paymentLogos">
+    <img src="images/paypal.png" alt="PayPal">
+    <img src="images/visa.png" alt="Visa">
+    <img src="images/western-union.png" alt="Western Union">
+</div>
+<br>
+<br>
+  <div class="paymentCopyright">
+    Copyright © 2020 Livraison Colis Express | Tous droits réservés.
+</div>
+</div>
+</div>
+  
+
+  
+<!-- SUIVI EXPÉDITION -->
+  
+<div id="trackForm" class="homeForm" style="display:none;">
+
+<div class="card">
+
+<label><b>Suivre une expédition ?</b></label>
+
+<h5>Vérifiez le statut du colis en utilisant le code d'expédition reçu.
+Saisissez-le dans la barre de recherche et vérifiez l'expédition.
+</h5>
+
+</div>
+
+<div class="searchBox">
+
+<i class="fas fa-search"></i>
+
+<input type="text" id="trackingNumber" placeholder="Entrez la référence du colis">
+
+</div>
+  <div id="trackingAlert"
+style="
+display:none;
+color:red;
+font-weight:bold;
+text-align:center;
+margin-top:10px;
+font-size:14px;
+">
+</div>
+
+<button class="mainButton" onclick="searchTracking()">
+Rechercher
+</button>
+
+</div>
+     <div id="trackingLoading" class="trackingLoading">
+    <span class="loadingSpinner"></span>
+    Vérification en cours...
+</div>
+</section>
+
+
+<!-- COMMENT ÇA MARCHE -->
+<section id="comment" class="page">
+
+<button class="backBtn" onclick="goBack()">← Retour</button>
+
+<h2>Comment ça marche</h2>
+
+<div class="card">
+
+<p> <h4>1. Remplissez avec précision toutes les informations demandées concernant l'expéditeur, le destinataire et votre colis.</h4>
+</p>
+
+<p> <h4>2. Choisissez le type d'expédition qui correspond le mieux à vos besoins d'expéditions et à votre budget.</h4>
+</p>
+
+<p> <h4>3. Indiquez le lieu de départ ainsi que la destination finale de votre colis.</h4>
+</p>
+
+<p><h4>4. Le tarif de votre livraison est calculé automatiquement en fonction du service sélectionné et du poids de votre colis.</h4>
+</p>
+
+<p><h4>5. Vérifiez soigneusement toutes les informations saisies, puis envoyez votre demande directement via WhatsApp.</h4>
+</p>
+
+<p>
+  <h4>6. Après validation de votre demande, un code de suivi unique vous est attribué. Ce code vous permet de suivre l'acheminement de votre colis en temps réel jusqu'à sa livraison.</h4>
+
+</p>
+
+</div>
+
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="page">
+
+<button class="backBtn" onclick="goBack()">← Retour</button>
+
+<h2>Nos services</h2>
+
+<label><h4>Choisissez le type de livraison qui convient à vos attentes.</h4></label>
+
+<div class="serviceGrid">
+
+<div class="serviceItem" onclick="showService('moinschere')">
+Livraison en point relais
+</div>
+
+<div class="serviceItem" onclick="showService('standard')">
+Livraison Standard express
+</div>
+
+<div class="serviceItem" onclick="showService('lendemain')">
+Livraison Le lendemain
+</div>
+
+<div class="serviceItem" onclick="showService('programmee')">
+Livraison Programmée
+</div>
+
+<div class="serviceItem" onclick="showService('gros')">
+Livraison de Gros colis
+</div>
+
+<div class="serviceItem" onclick="showService('international')">
+Livraison Internationale (Europe)
+</div>
+
+</div>
+
+</section>
+
+<!-- SERVICE PAGE -->
+<section id="servicePage" class="page">
+  <button class="backBtn" onclick="showPage('services')">← Retour</button>
+
+<h2 id="serviceTitle"></h2>
+
+<!-- PAYS DÉPART -->
+<select id="countrySelect" style="display:none;">
+<option value="">Choisir un pays</option>
+<option>France</option>
+<option>Belgique</option>
+<option>Allemagne</option>
+<option>Espagne</option>
+<option>Italie</option>
+<option>Portugal</option>
+<option>Pays-Bas</option>
+<option>Luxembourg</option>
+<option>Autriche</option>
+<option>Suisse</option>
+<option>Danemark</option>
+<option>Finlande</option>
+<option>Norvège</option>
+<option>Suède</option>
+<option>Irlande</option>
+<option>Pologne</option>
+<option>Grèce</option>
+<option>Roumanie</option>
+<option>Hongrie</option>
+<option>Tchéquie</option>
+</select>
+
+<label><b>De :</b></label>
+<input type="text" id="villeDepart" placeholder="Ville de départ du colis">
+<input type="text" id="cpDepart" placeholder="Code postal de départ">
+
+<!-- PAYS DESTINATION -->
+<select id="countryDestination" style="display:none;">
+<option value="">Choisir un pays</option>
+<option>France</option>
+<option>Belgique</option>
+<option>Allemagne</option>
+<option>Espagne</option>
+<option>Italie</option>
+<option>Portugal</option>
+<option>Pays-Bas</option>
+<option>Luxembourg</option>
+<option>Autriche</option>
+<option>Suisse</option>
+<option>Danemark</option>
+<option>Finlande</option>
+<option>Norvège</option>
+<option>Suède</option>
+<option>Irlande</option>
+<option>Pologne</option>
+<option>Grèce</option>
+<option>Roumanie</option>
+<option>Hongrie</option>
+<option>Tchéquie</option>
+</select>
+
+<label><b>À :</b></label>
+<input type="text" id="villeArrivee" placeholder="Ville de destination du colis">
+<input type="text" id="cpArrivee" placeholder="Code postal destination">
+
+<!-- DIMENSIONS -->
+<div class="dimensions">
+<h4>Dimensions du colis :</h4>
+
+<input type="number" id="longueur" placeholder="Longueur (m)">
+<input type="number" id="largeur" placeholder="Largeur (m)">
+<input type="number" id="hauteur" placeholder="Hauteur (m)">
+</div>
+
+<!-- POIDS -->
+<!-- POIDS -->
+<label><b>Poids du colis :</b></label>
+
+<div id="poidsContainer">
+
+<select id="poidsSelect"></select>
+
+<input
+type="number"
+id="poidsInput"
+placeholder="Entrez le poids de votre colis"
+style="display:none;"
+oninput="calculPrix()">
+
+<!-- Alerte poids personnalisée -->
+<div id="poidsAlert" 
+style="
+display:none;
+color:red;
+font-weight:bold;
+text-align:center;
+margin-top:10px;
+font-size:14px;
+">
+</div>
+
+</div>
+
+<!-- LIVRAISON PROGRAMMÉE -->
+<div id="programmeeLabel" style="display:none;margin-bottom:10px;">
+<b>Choisissez votre date de livraison</b>
+</div>
+
+<select id="dateLivraison" style="display:none;"></select>
+
+<div id="warningDate" class="card" style="display:none;margin-bottom:10px;">
+<br>
+<div style="text-align:center; font-weight:bold;">
+NB : La date limite de programmation d'une livraison est de deux semaines.
+<br>⚠️ Attention : si vous dépassez la date programmée, des frais supplémentaires peuvent être ajoutés.
+</div>
+</div>
+
+<!-- PRIX -->
+<input id="prix" readonly>
+  <p id="formError" style="display:none;color:red;font-weight:bold;text-align:center;margin:15px 0;">
+</p>
+
+<button class="mainButton" onclick="sendWhatsapp()">
+Expédier maintenant
+</button>
+</section>
+<!-- AIDE / FAQ -->
+<section id="aide" class="page">
+
+<button class="backBtn" onclick="goBack()">← Retour</button>
+
+<h2>FAQ - Questions fréquentes</h2>
+
+<div class="card">
+
+<h3>1. Comment fonctionne le service de livraison ?</h3>
+<p><h4>Le service de livraison permet d’envoyer un colis en choisissant un type de livraison. Le prix est calculé automatiquement selon le poids et le service sélectionné.</h4></p>
+
+<h3>2. Est-ce que je peux suivre mon colis ?</h3>
+<p><h4>Oui, chaque colis bénéficie d’un suivi après validation de l’envoi afin de garantir la transparence et la sécurité.</h4></p>
+
+<h3>3. Quels types de colis sont acceptés ?</h3>
+<p><h4>Tous types de colis standards sont acceptés tant qu’ils respectent les limites de poids et de dimensions indiquées dans le formulaire.</h4></p>
+
+<h3>4. Comment est calculé le prix ?</h3>
+<p><h4>Le prix est calculé automatiquement en fonction du poids du colis et du type de livraison choisi.</h4></p>
+
+<h3>5. Puis-je modifier ma commande après validation ?</h3>
+<p><h4>Oui, mais uniquement avant l’expédition du colis. Une modification tardive peut entraîner des frais supplémentaires.</h4></p>
+
+<h3>6. Quels sont les délais de livraison ?</h3>
+<p><h4>Les délais varient selon le service choisi : standard, express, lendemain ou international.</h4></p>
+
+<h3>7. Est-ce que la livraison est sécurisée ?</h3>
+<p><h4>Oui, chaque colis est traité avec soin et sécurisé jusqu’à la livraison finale.</h4></p>
+
+<h3>8. Comment contacter le service client ?</h3>
+<p><h4>Vous pouvez nous contacter directement via WhatsApp en cliquant sur le bouton du menu.</h4></p>
+
+<h3>9. Puis-je envoyer un colis à l’international ?</h3>
+<p><h4>Oui, un service spécial est disponible pour les livraisons internationales en Europe.</h4></p>
+
+<h3>10. Que se passe-t-il en cas de retard ?</h3>
+<p><h4>En cas de retard, le client est informé immédiatement et une solution est proposée selon la situation.</h4></p>
+
+<h3>11. Y a-t-il une limite de poids ?</h3>
+<p><h4>Oui, chaque service possède une limite de poids minimale et maximale indiquée lors de la sélection.</h4></p>
+
+<h3>12. Puis-je annuler une livraison ?</h3>
+<p><h4>Pour l’annulation, il est possible de contacter le service client via WhatsApp dans les brefs délais avant que le colis ne soit expédié.</h4></p>
+
+</div>
+
+</section>
+  <!-- À PROPOS -->
+<section id="apropos" class="page">
+
+<button class="backBtn" onclick="retourAPropos()">← Retour</button>
+
+<div class="card aproposCard">
+
+<h2>À propos de Livraison Colis Express</h2>
+
+<p>
+      
+
+      Livraison Colis est bien plus qu’un simple service de transport. Nous sommes un partenaire de confiance qui accompagne particuliers, professionnels et entreprises dans toutes leurs expéditions, en France comme vers plusieurs destinations européennes. Notre objectif est d’offrir des solutions de livraison performantes, rapides et adaptées aux besoins de chacun.</p>
+
+<p> Notre mission est de rendre chaque expédition simple, sûre et accessible grâce à un service fiable, des tarifs compétitifs et une prise en charge professionnelle. Nous accordons une importance particulière au respect des délais, à la sécurité des colis et à la qualité de notre relation client,un 
+<a href="https://wa.me/678171894" class="serviceClientLink">
+    service client
+</a>toujours à votre écoute 24/24 et 7j/7j.</p>
+
+<p> Nos valeurs sont fondées sur la confiance, la transparence, le professionnalisme, la réactivité et l’engagement pour vous aidez à <a href="#" class="serviceClientLink" onclick="allerFormulaire()">
+    expédier maintenant
+</a>en toute sécurite. Elles nous permettent de proposer un service sur lequel nos clients peuvent compter au quotidien, qu’il s’agisse d’un envoi personnel ou professionnel.</p>
+
+<p>
+Chaque colis représente une responsabilité que nous assumons avec sérieux. C’est pourquoi nous mettons tout en œuvre pour offrir une expérience de livraison fluide, efficace et rassurante, depuis la prise en charge de votre envoi jusqu’à sa livraison à destination. Nous veillons à respecter les délais annoncés, à assurer un suivi rigoureux de chaque expédition et à garantir que vos colis soient transportés dans les meilleures conditions. Avec Livraison Colis Express, votre satisfaction est notre priorité et votre confiance est notre plus grande réussite. Chaque jour, nous nous engageons à améliorer la qualité de nos services afin de répondre au mieux à vos attentes et de vous offrir une solution de livraison fiable, rapide et sécurisée.
+</p>
+
+</div>
+
+</section>
+ <button id="scrollTopBtn" onclick="scrollToTop()">
+    ↑
+</button> 
+  <!-- =========================
+     COOKIES / CONFIDENTIALITÉ
+========================= -->
+
+<div id="cookieOverlay">
+
+<div id="cookieBanner">
+
+<div class="cookieHeader">
+    <div class="cookieIcon">🍪</div>
+
+    <div>
+        <h2>Respect de votre vie privée</h2>
+
+        <p>
+            Livraison Colis Express utilise des cookies et des technologies
+            similaires afin de garantir le bon fonctionnement du site,
+            d'améliorer votre expérience de navigation, de mesurer les
+            performances et de sécuriser nos services.
+            Vous pouvez accepter tous les cookies, les refuser ou
+            personnaliser vos préférences à tout moment.
+        </p>
+    </div>
+</div>
+<p class="cookiePolicyLink">
+
+    <a href="#" onclick="togglePrivacyPolicy(); return false;">
+
+        Lire notre Politique de confidentialité complète
+
+    </a>
+
+</p>
+
+<div id="privacyPolicyText" style="display:none;">
+
+    <h2>Politique de confidentialité</h2>
+
+<p>
+
+Chez <b>Livraison Colis Express</b>, nous accordons une grande importance à la protection de votre vie privée et de vos données personnelles.
+
+Les cookies utilisés sur notre site ont pour objectif d'assurer le bon fonctionnement des services proposés, de mémoriser certaines préférences de navigation, d'améliorer les performances du site et de mesurer son utilisation afin d'offrir une meilleure expérience à tous nos utilisateurs.
+
+Les informations collectées ne sont jamais vendues à des tiers. Elles sont uniquement utilisées dans le cadre de l'amélioration de nos services, de la sécurité du site, de la prévention des fraudes et du respect de nos obligations légales.
+
+Vous pouvez accepter tous les cookies, les refuser ou personnaliser vos préférences à tout moment. Les cookies strictement nécessaires restent actifs car ils sont indispensables au fonctionnement du site.
+
+Selon votre choix, certaines fonctionnalités ou certains contenus personnalisés peuvent être limités.
+
+Vos préférences sont enregistrées localement sur votre appareil et peuvent être modifiées ultérieurement à tout moment.
+
+Conformément à la réglementation applicable sur la protection des données personnelles, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation du traitement ainsi que d'un droit d'opposition lorsque celui-ci est applicable.
+
+Pour toute question concernant notre politique de confidentialité ou l'utilisation de vos données personnelles, vous pouvez contacter notre service client qui vous apportera toutes les informations nécessaires.
+
+Cette politique peut être mise à jour afin de tenir compte des évolutions techniques, légales ou de nos services.
+
+</p>
+
+</div>
+<div class="cookieButtons">
+
+<button class="cookieAccept"
+onclick="acceptCookies()">
+
+✅ Tout accepter
+
+</button>
+
+<button class="cookieSettings"
+onclick="openCookieSettings()">
+
+⚙️ Personnaliser mes préférences
+
+</button>
+
+<button class="cookieReject"
+onclick="rejectCookies()">
+
+❌ Tout refuser
+
+</button>
+
+</div>
+
+</div>
+</div>
+
+<!-- =========================
+     FENÊTRE PERSONNALISATION
+========================= -->
+
+<div id="cookieSettingsBox">
+
+<div class="cookieWindow">
+
+<h2>⚙️ Préférences des cookies</h2>
+
+<p>
+
+Choisissez les cookies que vous souhaitez autoriser.
+
+</p>
+
+<div class="cookieOption">
+
+<label>
+
+<input
+type="checkbox"
+checked
+disabled>
+
+<b>Cookies strictement nécessaires</b>
+
+</label>
+
+<p>
+
+Indispensables au fonctionnement du site.
+Ces cookies ne peuvent pas être désactivés.
+
+</p>
+
+</div>
+
+<div class="cookieOption">
+
+<label>
+
+<input
+type="checkbox"
+id="cookiePerformance">
+
+<b>Cookies de performance</b>
+
+</label>
+
+<p>
+
+Nous permettent d'améliorer les performances du site.
+
+</p>
+
+</div>
+
+<div class="cookieOption">
+
+<label>
+
+<input
+type="checkbox"
+id="cookieAudience">
+
+<b>Cookies de mesure d'audience</b>
+
+</label>
+
+<p>
+
+Nous aident à comprendre comment les visiteurs utilisent le site.
+
+</p>
+
+</div>
+
+<div class="cookieOption">
+
+<label>
+
+<input
+type="checkbox"
+id="cookiePreferences">
+
+<b>Cookies de personnalisation</b>
+
+</label>
+
+<p>
+
+Mémorisent vos préférences comme la langue
+ou certains paramètres.
+
+</p>
+
+</div>
+
+<div class="cookieOption">
+
+<label>
+
+<input
+type="checkbox"
+id="cookieMarketing">
+
+<b>Cookies marketing</b>
+
+</label>
+
+<p>
+
+Utilisés pour afficher des contenus et offres
+adaptés à vos centres d'intérêt.
+
+</p>
+
+</div>
+
+<div class="cookieButtons">
+
+<button
+class="cookieAccept"
+onclick="saveCookieSettings()">
+
+💾 Enregistrer mes préférences
+
+</button>
+
+<button
+class="cookieReject"
+onclick="closeCookieSettings()">
+
+Retour
+
+</button>
+
+</div>
+<div id="cookieToast">
+    ✅ Préférences enregistrées
+</div>
+</div>
+<div id="cookieErrorToast">
+    🔴 Veuillez sélectionner au moins une préférence avant d'enregistrer.
+</div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
 
