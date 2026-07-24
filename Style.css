@@ -1594,9 +1594,4 @@ text-indent:0,8em;     /* alinéa de la première ligne */
     color:#FFF;
     padding:15px 25px;
 }
-.logo{
-    width:55px !important;
-    height:55px !important;
-    object-fit:cover;
-    display:block;
-}
+
